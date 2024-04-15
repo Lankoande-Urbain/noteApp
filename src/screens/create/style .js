@@ -18,11 +18,16 @@ const createStyle = StyleSheet.create({
       textAlign: 'center',
       marginVertical: 15,
    },
-
-   linearGradient: {
+   body: {
+      elevation: 5,
+      borderTopLeftRadius: 25,
+      borderTopRightRadius: 25,
+      backgroundColor: COLOR.bg_White,
       flex: 1,
-      paddingLeft: 1,
-      paddingRight: 1,
+      shadowColor: COLOR.black,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
    },
    form: {
       marginHorizontal: 30,

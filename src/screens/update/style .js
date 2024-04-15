@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLOR, FONTSIZE, PADDING } from "../../outils/constantes";
 
 
-const createStyle = StyleSheet.create({
+const updateStyle = StyleSheet.create({
    header: {
       flexDirection: 'row',
       backgroundColor: COLOR.oran1,
@@ -18,11 +18,16 @@ const createStyle = StyleSheet.create({
       textAlign: 'center',
       marginVertical: 15,
    },
-
-   linearGradient: {
+   body: {
+      elevation: 5,
+      borderTopLeftRadius: 25,
+      borderTopRightRadius: 25,
+      backgroundColor: COLOR.bg_White,
       flex: 1,
-      paddingLeft: 1,
-      paddingRight: 1,
+      shadowColor: COLOR.black,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
    },
    form: {
       marginHorizontal: 30,
@@ -49,13 +54,10 @@ const createStyle = StyleSheet.create({
       color: '#30e63f',
       textAlign: 'center',
       marginBottom: 5,
-      fontSize: 16
-
-
+      fontSize: 16,
    }
-
 
 });
 
 
-export default createStyle
+export default updateStyle

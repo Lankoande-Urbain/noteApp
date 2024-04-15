@@ -3,12 +3,12 @@ import React from 'react'
 import Icons from 'react-native-vector-icons/Ionicons'
 import { COLOR } from '../outils/constantes';
 
-const BtnAdd = () => {
+const MenuIcon = () => {
    return <Icons
 
       style={{
-         fontSize: 72,
-         color: COLOR.oran1,
+         fontSize: 42,
+         color: COLOR.bg_White,
          elevation: 5,
          shadowColor: COLOR.black,
          shadowOffset: { width: 2, height: 2 },
@@ -17,4 +17,4 @@ const BtnAdd = () => {
       name='add-circle-sharp' />;
 }
 
-export default BtnAdd
+export default MenuIcon

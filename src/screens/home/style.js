@@ -17,8 +17,7 @@ const homeStyle = StyleSheet.create({
       fontWeight: 'bold',
       marginTop: 'auto',
       marginBottom: 'auto',
-      marginRight: 60,
-      marginLeft: 30
+      marginLeft: 120,
    },
    title: {
       color: COLOR.oran1,
@@ -27,6 +26,17 @@ const homeStyle = StyleSheet.create({
       textTransform: 'uppercase',
       textAlign: 'center',
       marginVertical: 15,
+   },
+   body: {
+      elevation: 5,
+      borderTopLeftRadius: 25,
+      borderTopRightRadius: 25,
+      backgroundColor: COLOR.bg_White,
+      flex: 1,
+      shadowColor: COLOR.black,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
    },
 
    card: {

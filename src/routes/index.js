@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StatusBar } from 'react-native'
 
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,6 +12,7 @@ import Login from '../screens/login';
 import Register from '../screens/register';
 import SQLite from 'react-native-sqlite-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomeScreenWithDrawer from '../composentes/HomeScreenWithDrawer';
 
 
 let db;
@@ -35,6 +36,16 @@ const Routes = () => {
             [],
          );
       });
+      const loadUserLoginState = async () => {
+         try {
+            const isLoggedIn = await AsyncStorage.getItem('isUserLoggedIn');
+            setIsUserLoggedIn(isLoggedIn !== null && isLoggedIn === 'true');
+         } catch (error) {
+            console.log(error);
+         }
+      };
+
+      loadUserLoginState();
    }, []);
 
    const handleLogin = (username, password) => {
@@ -68,21 +79,23 @@ const Routes = () => {
       });
    };
 
-   const LoginScreen = (props) => <Login {...props} handleLogin={handleLogin} />;
-   const RegisterScreen = (props) => <Register {...props} handleRegister={handleRegister} />;
-
    const handleLogout = () => {
       setIsUserLoggedIn(false);
       // Naviguer vers l'écran de connexion
    };
+   const LoginScreen = (props) => <Login {...props} handleLogin={handleLogin} />;
+   const RegisterScreen = (props) => <Register {...props} handleRegister={handleRegister} />;
+
    return (
 
       <SafeAreaProvider>
          <NavigationContainer>
+            <StatusBar backgroundColor={COLOR.oran1} barStyle="light-content" />
             <Stack.Navigator initialRouteName='login' screenOptions={{ headerTitle: '', headerTransparent: true, }} >
                {isUserLoggedIn ? (
                   <>
-                     <Stack.Screen name="home" component={Home} options={{
+                     <Stack.Screen name="home" component={HomeScreenWithDrawer} options={{
+                        headerShown: false,
                         headerTintColor: 'white',
                         // headerRight: () => (
                         //    <Button
@@ -93,6 +106,7 @@ const Routes = () => {
                         // ),
                      }} />
                      <Stack.Screen name="create" component={CreacteNote} options={{
+
                         headerTintColor: 'white', headerBackTitleStyle: { fontSize: 30 }
                      }} />
                      <Stack.Screen name="update" component={UpdateNote} options={{

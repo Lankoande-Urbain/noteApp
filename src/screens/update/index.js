@@ -1,6 +1,6 @@
 import { View, Text, Alert, ScrollView } from 'react-native';
 import React, { useState } from 'react';
-import createStyle from './style ';
+import updateStyle from './style ';
 import { Input } from '@rneui/themed';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLOR } from '../../outils/constantes';
@@ -65,24 +65,25 @@ const UpdateNote = ({ route, navigation }) => {
    return (
       <ScrollView
          style={{
+            backgroundColor: COLOR.oran1,
             flex: 1,
             paddingTop: insets.top,
             paddingBottom: insets.bottom,
             paddingLeft: insets.left,
             paddingRight: insets.right,
          }} >
-         <View >
+         <View style={updateStyle.body} >
             {/* header partie */}
-            <View style={createStyle.header} >
+            <View style={updateStyle.header} >
 
             </View>
             <View>
-               <Text style={createStyle.title}>Update note</Text>
+               <Text style={updateStyle.title}>Update note</Text>
                <DivBar />
             </View>
 
             {/* Body view  */}
-            <View style={createStyle.form}>
+            <View style={updateStyle.form}>
                <Input
                   value={titre}
                   ref={inputTitre}
@@ -109,7 +110,7 @@ const UpdateNote = ({ route, navigation }) => {
                   onChangeText={(val) => setDescrip(val)}
                   multiline
                />
-               <Text style={createStyle.valideMessage}>{message}</Text>
+               <Text style={updateStyle.valideMessage}>{message}</Text>
 
                <Button
                   buttonStyle={{

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { COLOR } from '../outils/constantes';
 
-const Avatar = ({ fullName, size = 50 }) => {
+const Avatar = ({ fullName, size = 50, onPress }) => {
    const initials = fullName ? fullName.split(' ').map(name => name[0]).join('') : '';
 
    return (
-      <View style={{
+      <TouchableOpacity onPress={onPress} style={{
          height: size,
          width: size,
          borderRadius: size / 2,
@@ -24,7 +24,7 @@ const Avatar = ({ fullName, size = 50 }) => {
                {initials}
             </Text>
          ) : null}
-      </View>
+      </TouchableOpacity>
    );
 };
 
