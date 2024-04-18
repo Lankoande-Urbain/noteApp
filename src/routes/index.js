@@ -13,11 +13,22 @@ import Register from '../screens/register';
 import SQLite from 'react-native-sqlite-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreenWithDrawer from '../composentes/HomeScreenWithDrawer';
+import Toast from 'react-native-toast-message';
 
 
 let db;
 const Stack = createNativeStackNavigator();
 const Routes = () => {
+
+   const errorToast = (message) => {
+      Toast.show({
+         type: 'error',
+         text1: 'Error!!',
+         text2: message,
+         visibilityTime: 5000,
+         topOffset: 50,
+      });
+   }
    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
    useEffect(() => {
@@ -60,7 +71,7 @@ const Routes = () => {
                   AsyncStorage.setItem('user_id', results.rows.item(0).user_id.toString());
                   AsyncStorage.setItem('user_fullname', results.rows.item(0).user_fullname);
                } else {
-                  alert('Please enter valid credentials!');
+                  errorToast('access refuse retry');
                }
             },
          );

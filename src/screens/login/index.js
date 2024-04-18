@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import LoginSvg from './../../doc/svg/login.svg';
 import loginStyle from './script';
 import { Input, Icon, Button } from '@rneui/themed';
+import { COLOR } from '../../outils/constantes';
+import Toast from 'react-native-toast-message';
 
 
 
@@ -11,9 +13,42 @@ const Login = ({ navigation, handleLogin }) => {
    const [user_name, setUser_name] = useState('');
    const [password, setPassword] = useState('');
 
+   const errorToast = (message) => {
+      Toast.show({
+         type: 'error',
+         text1: 'Error!!',
+         text2: message,
+         visibilityTime: 5000,
+         topOffset: 50,
+      });
+   }
+   const validateEmail = (email) => {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+   }
+
+
+   const checkInput = () => {
+
+      if (user_name.trim() === '') {
+         errorToast('user name cannot empty');
+      }
+      else if (!validateEmail(user_name)) {
+         errorToast('this is not a valid email!!')
+      }
+      else if (password.trim() === '') {
+         errorToast('password cannot empty');
+      }
+      else {
+
+         handleLogin(user_name, password);
+      }
+   }
+
    return (
-      <ScrollView>
-         <View style={{ alignItems: 'center' }}>
+      <ScrollView style={{ backgroundColor: COLOR.bg_White }}>
+         <Toast />
+         <View style={{ alignItems: 'center', zIndex: -1, }}>
             <LoginSvg width={300} height={350} />
          </View>
          {/* page titre  */}
@@ -62,7 +97,7 @@ const Login = ({ navigation, handleLogin }) => {
                radius={'lg'}
                color={'warning'}
                onPress={() => {
-                  handleLogin(user_name, password);
+                  checkInput();
                }}
 
             >Login</Button>

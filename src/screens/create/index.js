@@ -1,6 +1,5 @@
 import { View, Text, Alert } from 'react-native'
 import React, { useState } from 'react'
-import { TextInput } from 'react-native-picasso'
 import createStyle from './style '
 import { Input, Icon } from '@rneui/themed';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,8 +8,10 @@ import DivBar from '../../composentes/divBar';
 import { Button, color } from '@rneui/base';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { API_BASE_URL } from '../../../apiConfig';
+import Toast from 'react-native-toast-message';
+import Header from '../../composentes/header';
 
-const CreacteNote = () => {
+const CreacteNote = ({ navigation }) => {
    const [message, setMessage] = useState('');
    const [titre, setTitre] = useState('');
    const [descrip, setDescrip] = useState('');
@@ -52,9 +53,17 @@ const CreacteNote = () => {
             throw new Error('Erreur lors de l\'enregistrement des données');
          }
 
-         setMessage('Enregistrement Effectuer !')
-         // inputTitre.current.focus();
-         // inputDescrip.current.focus();
+         // Afficher le toast
+         Toast.show({
+            type: 'info',
+            text1: 'Info!!',
+            text2: 'La note a été créée',
+            visibilityTime: 5000,
+         });
+
+         // Revenir à la page d'accueil
+         navigation.goBack();
+
       } catch (error) {
          console.error('Erreur lors de l\'enregistrement des données :', error);
       }
@@ -72,9 +81,7 @@ const CreacteNote = () => {
          }}
       >
          {/* header partie */}
-         <View style={createStyle.header} >
-
-         </View>
+         <Header titre={'Create note'} />
          <View style={createStyle.body}>
 
 
@@ -139,7 +146,7 @@ const CreacteNote = () => {
                   radius={'lg'}
                   onPress={handleEnregistrer}
 
-               >Enregistrer</Button>
+               >Save</Button>
 
             </View>
          </View>

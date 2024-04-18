@@ -8,6 +8,7 @@ import DivBar from '../../composentes/divBar';
 import { Button, color } from '@rneui/base';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { API_BASE_URL } from '../../../apiConfig';
+import Toast from 'react-native-toast-message';
 
 const UpdateNote = ({ route, navigation }) => {
    const [message, setMessage] = useState('');
@@ -52,10 +53,15 @@ const UpdateNote = ({ route, navigation }) => {
             console.error('Erreur lors de l\'enregistrement des données');
          }
 
-         setMessage('Modification Effectuer !')
-         navigation.goBack()
-         // inputTitre.current.focus();
-         // inputDescrip.current.focus();
+         Toast.show({
+            type: 'info',
+            text1: 'Info!!',
+            text2: 'La note a été modifiée',
+            visibilityTime: 5000,
+         });
+
+         // Revenir à la page d'accueil
+         navigation.goBack();
 
       } catch (error) {
          console.error('Erreur lors de l\'enregistrement des données :', error);
@@ -63,7 +69,7 @@ const UpdateNote = ({ route, navigation }) => {
    };
 
    return (
-      <ScrollView
+      <View
          style={{
             backgroundColor: COLOR.oran1,
             flex: 1,
@@ -72,11 +78,11 @@ const UpdateNote = ({ route, navigation }) => {
             paddingLeft: insets.left,
             paddingRight: insets.right,
          }} >
+         {/* header partie */}
+         <Header titre={'Update note'} />
          <View style={updateStyle.body} >
-            {/* header partie */}
-            <View style={updateStyle.header} >
 
-            </View>
+
             <View>
                <Text style={updateStyle.title}>Update note</Text>
                <DivBar />
@@ -124,14 +130,14 @@ const UpdateNote = ({ route, navigation }) => {
                   }}
                   // type='outline'
                   radius={'lg'}
-                  onPress={handleEnregistrer}
+                  onPress={handleEnregistrer()}
 
-               >Update</Button>
+               >Save</Button>
 
             </View>
 
          </View>
-      </ScrollView >
+      </View >
 
    )
 }

@@ -3,8 +3,12 @@ import React, { useState } from 'react'
 import LoginSvg from './../../doc/svg/signup.svg';
 import loginStyle from './script';
 import { Input, Icon, Button } from '@rneui/themed';
+import { COLOR } from '../../outils/constantes';
+import Toast from 'react-native-toast-message';
 
 const Register = ({ navigation, handleRegister }) => {
+
+
    const [user_fullname, setUserFullname] = useState('');
    const [user_name, setUsername] = useState('');
    const [user_password, setPassword] = useState('');
@@ -18,6 +22,19 @@ const Register = ({ navigation, handleRegister }) => {
    const passPas = React.createRef();
    const passCHeckPas = React.createRef();
 
+   const errorToast = (message) => {
+      Toast.show({
+         type: 'error',
+         text1: 'Error!!',
+         text2: message,
+         visibilityTime: 5000,
+         topOffset: 20,
+      });
+   }
+   const validateEmail = (email) => {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+   }
    const checkInput = async () => {
 
       setFullnameError('');
@@ -27,21 +44,28 @@ const Register = ({ navigation, handleRegister }) => {
 
       if (user_fullname.trim() === '') {
          setFullnameError('the full name is empty!');
+         errorToast(fullnameError);
          fullPas.current.focus();
          return;
       }
       else if (user_name.trim() === '') {
          setUsernameError('user name is empty !');
+         errorToast(usernameError);
          namePas.current.focus();
          return;
+      } else if (!validateEmail(user_name)) {
+         errorToast('this is not a valid email!!');
+         namePas.current.focus();
       }
       else if (user_password.trim() === '') {
          setPassworError('passWord is empty !');
+         errorToast(passwordError);
          passPas.current.focus();
          return;
       }
       else if (passwordCheck.trim() === '') {
          setCheckpassError('check password is empty !');
+         errorToast(checkpassError);
          passCHeckPas.current.focus();
          return;
       }
@@ -57,8 +81,10 @@ const Register = ({ navigation, handleRegister }) => {
    }
 
    return (
-      <ScrollView>
-         <View style={{ alignItems: 'center' }}>
+
+      <ScrollView style={{ backgroundColor: COLOR.bg_White }}>
+         <Toast />
+         <View style={{ alignItems: 'center', zIndex: -1 }}>
             <LoginSvg width={300} height={300}
                style={{ marginTop: -30 }}
             />
@@ -69,6 +95,7 @@ const Register = ({ navigation, handleRegister }) => {
                onPress={() => navigation.goBack()
                }
             />
+
             <Text style={loginStyle.titre}>Sign up</Text>
          </View>
          {/* page body */}

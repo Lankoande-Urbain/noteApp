@@ -2,7 +2,7 @@ export const COLOR = {
    black: '#000',
    gris: '#333',
    main: '#000',
-   bg_White: '#dfdfdf',
+   bg_White: '#fff',
    oran1: '#ff9800',
    oran2: '#f44336',
 }

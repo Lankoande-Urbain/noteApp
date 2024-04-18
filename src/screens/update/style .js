@@ -18,6 +18,13 @@ const updateStyle = StyleSheet.create({
       textAlign: 'center',
       marginVertical: 15,
    },
+   header: {
+      flexDirection: 'row',
+      backgroundColor: COLOR.oran1,
+      height: 65,
+      justifyContent: 'space-between',
+
+   },
    body: {
       elevation: 5,
       borderTopLeftRadius: 25,

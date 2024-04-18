@@ -10,9 +10,14 @@ const Drawer = createDrawerNavigator();
 
 function HomeScreenWithDrawer() {
    return (
-      <Drawer.Navigator screenOptions={{ headerTransparent: true, headerTitle: '', headerTintColor: COLOR.bg_White, headerTitleStyle: { fontSize: 32 } }} drawerContent={props => <CustomDrawerContent {...props} />}>
-         <Drawer.Screen name="Option" component={Home} />
-         <Drawer.Screen name="Setting" component={Setting} />
+      <Drawer.Navigator screenOptions={{
+         headerTransparent: true,
+         headerTitle: '',
+         headerTintColor: COLOR.bg_White,
+         headerTitleStyle: { fontSize: 32 },
+      }} drawerContent={props => <CustomDrawerContent {...props} />}>
+         <Drawer.Screen name="Option" component={Home}
+         />
       </Drawer.Navigator>
    );
 }

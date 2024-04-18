@@ -4,20 +4,37 @@ import BtnAdd from "../../composentes/btnAdd";
 
 
 const homeStyle = StyleSheet.create({
-   header: {
+   // drawer style
+
+   headerDrawer: {
       flexDirection: 'row',
       backgroundColor: COLOR.oran1,
-      padding: 7,
+      padding: 5,
       justifyContent: 'space-between',
+      marginTop: -4,
+      elevation: 5,
+      borderBottomLeftRadius: 15,
+      borderBottomRightRadius: 15,
+
 
    },
-   headerTitre: {
+   headerDrawerTitre: {
       color: COLOR.bg_White,
       fontSize: FONTSIZE.title,
       fontWeight: 'bold',
       marginTop: 'auto',
       marginBottom: 'auto',
-      marginLeft: 120,
+      marginLeft: 20,
+
+   },
+   // home style
+   header: {
+      flexDirection: 'row',
+      backgroundColor: COLOR.oran1,
+      padding: 7,
+      height: 65,
+      justifyContent: 'space-between',
+
    },
    title: {
       color: COLOR.oran1,
@@ -31,7 +48,7 @@ const homeStyle = StyleSheet.create({
       elevation: 5,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
-      backgroundColor: COLOR.bg_White,
+      backgroundColor: '#fff',
       flex: 1,
       shadowColor: COLOR.black,
       shadowOffset: { width: 0, height: 2 },
@@ -40,37 +57,56 @@ const homeStyle = StyleSheet.create({
    },
 
    card: {
-      flex: 1,
       backgroundColor: 'white',
-      elevation: 10,
+      elevation: 7,
       padding: 10,
       marginHorizontal: 25,
       marginVertical: 10,
       borderRadius: 15,
       borderColor: COLOR.oran1,
-      borderWidth: 2
+      borderWidth: 2,
+      borderBottomWidth: 6,
+      borderLeftWidth: 3,
+      borderRightWidth: 3,
    },
    cardTitle: {
       fontSize: 17,
       marginBottom: 5,
       fontWeight: 'bold',
       color: COLOR.black,
-      textAlign: 'center'
+      textAlign: 'center',
+      elevation: 5,
    },
 
    cardInfo: {
       flexDirection: 'column',
-      paddingHorizontal: 20
+      paddingHorizontal: 20,
    },
-   linearGradient: {
-      flex: 1,
-      paddingLeft: 1,
-      paddingRight: 1,
+   timeCard: {
+      flexDirection: 'row',
    },
+   timeIcon: {
+      marginTop: 'auto',
+      marginBottom: 'auto',
+      fontSize: 14,
+   },
+   timeText: {
+      color: COLOR.gris,
+      fontStyle: 'italic',
+      fontSize: 12,
+      marginTop: 'auto',
+      marginBottom: 'auto',
+      paddingRight: 5,
+      paddingLeft: 2,
+   },
+   actionCard: {
+      flexDirection: 'row',
+      marginLeft: 'auto',
+   },
+
    cardIcon: {
       flexDirection: 'row',
       padding: 5,
-      justifyContent: 'flex-end'
    },
    icon: {
       fontSize: 20,
@@ -87,50 +123,6 @@ const homeStyle = StyleSheet.create({
       zIndex: 1000
       // Ajoutez d'autres styles pour votre élément ici
    },
-   centeredView: {
-      flex: 1,
-      marginTop: 10,
-      marginLeft: 0,
-   },
-   modalView: {
-      marginTop: 10,
-      backgroundColor: 'white',
-      padding: 35,
-      flex: 1,
-      borderTopRightRadius: 15,
-      borderTopLeftRadius: 5,
-      width: 270,
-      shadowColor: COLOR.oran1,
-      shadowOffset: {
-         width: 100,
-         height: 100,
-      },
-      shadowOpacity: 1,
-      shadowRadius: 4,
-      elevation: 5,
-   },
-   button: {
-      borderRadius: 1,
-      padding: 10,
-      elevation: 2,
-   },
-   buttonOpen: {
-      backgroundColor: '#F194FF',
-   },
-   buttonClose: {
-      backgroundColor: '#2196F3',
-   },
-   textStyle: {
-      color: 'white',
-      fontWeight: 'bold',
-      textAlign: 'center',
-   },
-   modalText: {
-      marginBottom: 15,
-      textAlign: 'center',
-   },
-
-
 
 });
 
