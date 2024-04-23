@@ -8,16 +8,19 @@ import { COLOR } from '../outils/constantes';
 
 const Drawer = createDrawerNavigator();
 
-function HomeScreenWithDrawer() {
+function HomeScreenWithDrawer({ handleLogout }) {
+
    return (
       <Drawer.Navigator screenOptions={{
          headerTransparent: true,
          headerTitle: '',
          headerTintColor: COLOR.bg_White,
          headerTitleStyle: { fontSize: 32 },
-      }} drawerContent={props => <CustomDrawerContent {...props} />}>
-         <Drawer.Screen name="Option" component={Home}
-         />
+         zIndex: -100,
+         headerShown: false,
+      }}
+         drawerContent={props => <CustomDrawerContent {...props} handleLogout={handleLogout} />}>
+         <Drawer.Screen name="Option" component={Home} />
       </Drawer.Navigator>
    );
 }

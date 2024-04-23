@@ -10,8 +10,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { API_BASE_URL } from '../../../apiConfig';
 import Toast from 'react-native-toast-message';
 import Header from '../../composentes/header';
+import { useTranslation } from 'react-i18next';
+
 
 const CreacteNote = ({ navigation }) => {
+
+   const { t } = useTranslation();
    const [message, setMessage] = useState('');
    const [titre, setTitre] = useState('');
    const [descrip, setDescrip] = useState('');
@@ -27,12 +31,12 @@ const CreacteNote = ({ navigation }) => {
       setTitreError('');
       setMessage('');
       if (titre.trim() === '') {
-         setTitreError('Veillez Remplir le titre !');
+         setTitreError(t('screens.create.error.title'));
          inputTitre.current.focus();
          return;
       }
       else if (descrip.trim() === '') {
-         setDescripError('Veillez Remplir la description !');
+         setDescripError(t('screens.create.error.description'));
          inputDescrip.current.focus();
          return;
       }
@@ -50,14 +54,14 @@ const CreacteNote = ({ navigation }) => {
          });
 
          if (!response.ok) {
-            throw new Error('Erreur lors de l\'enregistrement des données');
+            throw new Error(t('screens.create.error.database'));
          }
 
          // Afficher le toast
          Toast.show({
             type: 'info',
-            text1: 'Info!!',
-            text2: 'La note a été créée',
+            text1: t('screens.create.info.text1'),
+            text2: t('screens.create.info.text2'),
             visibilityTime: 5000,
          });
 
@@ -65,7 +69,7 @@ const CreacteNote = ({ navigation }) => {
          navigation.goBack();
 
       } catch (error) {
-         console.error('Erreur lors de l\'enregistrement des données :', error);
+         console.error(t('screens.create.error.database'), error);
       }
    };
 
@@ -81,23 +85,17 @@ const CreacteNote = ({ navigation }) => {
          }}
       >
          {/* header partie */}
-         <Header titre={'Create note'} />
+         <Header titre={t('screens.create.title')} />
          <View style={createStyle.body}>
-
-
-            <View>
-               <Text style={createStyle.title}>Create note</Text>
-               <DivBar />
-            </View>
 
             {/* Body view  */}
             <View style={createStyle.form}>
                <Input
                   ref={inputTitre}
-                  placeholder='Entrer votre titre'
+                  label={t('screens.create.label.title')}
+                  placeholder={t('screens.create.placeholder.title')}
                   errorStyle={{ color: 'red' }}
                   errorMessage={titreError}
-                  label='Titre'
                   inputStyle={{ color: COLOR.black, fontStyle: 'italic' }}
                   labelStyle={{ color: COLOR.gris, fontWeight: 'bold', fontSize: 18 }}
 
@@ -112,11 +110,10 @@ const CreacteNote = ({ navigation }) => {
                />
                <Input
                   ref={inputDescrip}
-                  label='Description'
-
+                  label={t('screens.create.label.description')}
+                  placeholder={t('screens.create.placeholder.description')}
                   errorStyle={{ color: 'red' }}
                   errorMessage={descripError}
-                  placeholder='Entrer votre description'
                   inputStyle={{ color: COLOR.black, fontStyle: 'italic' }}
                   labelStyle={{ color: COLOR.gris, fontWeight: 'bold', fontSize: 18 }}
                   leftIcon={
@@ -146,7 +143,7 @@ const CreacteNote = ({ navigation }) => {
                   radius={'lg'}
                   onPress={handleEnregistrer}
 
-               >Save</Button>
+               >{t('screens.create.button')}</Button>
 
             </View>
          </View>

@@ -1,2 +1,2 @@
 
-export const API_BASE_URL = 'http://192.168.1.19:8080/notes';
+export const API_BASE_URL = 'http://192.168.1.8:8080/notes';

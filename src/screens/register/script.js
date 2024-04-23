@@ -8,7 +8,7 @@ const loginStyle = StyleSheet.create({
       fontWeight: 'bold',
       fontSize: FONTSIZE.title,
       textTransform: 'uppercase',
-      marginLeft: 'auto', marginRight: 'auto'
+      left: 110
    },
    form: {
       paddingHorizontal: 35,

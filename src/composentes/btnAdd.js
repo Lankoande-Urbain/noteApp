@@ -13,6 +13,7 @@ const BtnAdd = () => {
          shadowColor: COLOR.black,
          shadowOffset: { width: 2, height: 2 },
          shadowOpacity: 0.75,
+         elevation: 100,
       }}
       name='add-circle-sharp' />;
 }

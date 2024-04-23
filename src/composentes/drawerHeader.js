@@ -17,7 +17,7 @@ const DrawerHeader = () => {
 
    return (
       <View style={homeStyle.headerDrawer}>
-         <Text style={homeStyle.headerDrawerTitre} >{userFullName}</Text>
+         <Text style={homeStyle.headerDrawerTitre} >{userFullName.toUpperCase()}</Text>
          <Avatar fullName={userFullName} size={55} />
       </View>
    )

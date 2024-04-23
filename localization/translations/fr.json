@@ -1,0 +1,121 @@
+{
+   "language": "french",
+   "screens": {
+      "singin": {
+         "title": "Se connecter",
+         "label": {
+            "name": "Nom d'utilisateur",
+            "password": "mot de passe"
+         },
+         "placeholder": {
+            "login": "nom@domaine.com",
+            "password": "mot de passe"
+         },
+         "buttom": "Se connecter",
+         "text": {
+            "ask": "N'avez vous pas de compte ?",
+            "link": "Cliquez ici"
+         },
+         "error": {
+            "user": "le nom d'utilisateur ne peux pas être vide !!",
+            "email": "C'est pas un email valide !!",
+            "password": "Le mot de passe ne peux pas être vide!!"
+         }
+      },
+      "singup": {
+         "title": "S'inscrire",
+         "placeholder": {
+            "fullname": "Nom complete",
+            "userName": "nom@domaine.com",
+            "password": "Mote de passe",
+            "confpassword": "Confirmer le mot de passe"
+         },
+         "buttom": "Enregistrer",
+         "error": {
+            "fullName": "Le nom complet ne peux pas être vide !!",
+            "userName": "Le nom d'utilisateur ne peux pas être vide !!",
+            "email": "Ce n'est pas un email valide !!",
+            "password": "le mot de passe ne peux pas être vide !!",
+            "checkPassword1": "la confirmation de mot de passe ne peuc pas être vide !!",
+            "checkPassword2": "les deux mots de passes ne peuvent pas être differentes !!"
+         }
+      },
+      "home": {
+         "title": "List de Note",
+         "text": {
+            "bienvenue": "👋nice to see you again "
+         },
+         "error": {
+            "database": "Erreur lors de la récupération des notes !! "
+         }
+      },
+      "create": {
+         "title": "Creation de note",
+         "error": {
+            "title": "Le titre ne peux pas être vide !!",
+            "description": "La description ne peux pas être vide !!",
+            "database": "Erreur lors de l'envoie des données !! "
+         },
+         "info": {
+            "text1": "Info!!",
+            "tedxt2": "La note a été créée"
+         },
+         "label": {
+            "title": "Titre",
+            "description": "Description"
+         },
+         "placeholder": {
+            "title": "Entrer votre titre",
+            "description": "Entrer votre description"
+         },
+         "button": "Sauvegarder"
+      },
+      "update": {
+         "title": "Modification de note",
+         "error": {
+            "title": "Le titre ne peux pas être vide !!",
+            "description": "La description ne peux pas être vide !!",
+            "database": "Erreur lors de l'envoie des données !! "
+         },
+         "info": {
+            "text1": "Info!!",
+            "text2": "La note a été modifiée"
+         },
+         "label": {
+            "title": "Titre",
+            "description": "Description"
+         },
+         "placeholder": {
+            "title": "Entrer votre titre",
+            "description": "Entrer votre description"
+         },
+         "button": "Sauvegarder"
+      },
+      "delete": {
+         "info": {
+            "text1": "Info!!",
+            "text2": "La note a été supprimée"
+         },
+         "text": {
+            "title": "Confirmation",
+            "body": "Etes-vous sûr de vouloir supprimer cette note ?"
+         },
+         "btnOption": {
+            "yes": "Oui",
+            "no": "Non"
+         }
+      },
+      "drawer": {
+         "about": "A propos",
+         "athor": "Auteur",
+         "text": "ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus est, sagittis nec ligula eget, sollicitudin egestas neque. Nunc id libero sapien. Fusce iaculis, odio ut ornare ultrices, magna lacus sollicitudin lorem, quis iaculis nulla justo et nibh",
+         "btnOption": {
+            "yes": "Oui",
+            "no": "Non",
+            "title": "Confirmation",
+            "body": "êtes vous sûr de vouloir vous deconnecté ?"
+         },
+         "btnLogout": "Deconnecté"
+      }
+   }
+}

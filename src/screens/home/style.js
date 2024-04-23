@@ -59,15 +59,15 @@ const homeStyle = StyleSheet.create({
    card: {
       backgroundColor: 'white',
       elevation: 7,
-      padding: 10,
+      marginTop: 20,
       marginHorizontal: 25,
-      marginVertical: 10,
       borderRadius: 15,
       borderColor: COLOR.oran1,
       borderWidth: 2,
       borderBottomWidth: 6,
       borderLeftWidth: 3,
       borderRightWidth: 3,
+      paddingVertical: 5,
    },
    cardTitle: {
       fontSize: 17,
@@ -79,7 +79,6 @@ const homeStyle = StyleSheet.create({
    },
 
    cardInfo: {
-      flexDirection: 'column',
       paddingHorizontal: 20,
    },
    timeCard: {
@@ -110,18 +109,22 @@ const homeStyle = StyleSheet.create({
    },
    icon: {
       fontSize: 20,
-      paddingHorizontal: PADDING.hori
+      paddingRight: 20,
    },
    img: {
       width: 350,
       height: 350,
    },
    btnAdd: {
+      elevation: 100,
       position: 'absolute',
       right: 0,
       bottom: 0,
-      zIndex: 1000
-      // Ajoutez d'autres styles pour votre élément ici
+      zIndex: 1000,
+      shadowColor: COLOR.black,
+      shadowOffset: { width: 1, height: 1 },
+      shadowOpacity: 0.50,
+
    },
 
 });

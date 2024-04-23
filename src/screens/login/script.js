@@ -20,8 +20,8 @@ const loginStyle = StyleSheet.create({
    },
    linkText: {
       paddingHorizontal: 20,
-      paddingTop: 30,
-      color: '#000'
+      marginTop: 25,
+      color: '#000',
    }
 
 });

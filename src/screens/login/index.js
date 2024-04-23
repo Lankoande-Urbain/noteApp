@@ -5,11 +5,13 @@ import loginStyle from './script';
 import { Input, Icon, Button } from '@rneui/themed';
 import { COLOR } from '../../outils/constantes';
 import Toast from 'react-native-toast-message';
-
+import { useTranslation } from 'react-i18next';
+import { TouchableOpacity } from 'react-native';
 
 
 const Login = ({ navigation, handleLogin }) => {
 
+   const { t, i18n } = useTranslation();
    const [user_name, setUser_name] = useState('');
    const [password, setPassword] = useState('');
 
@@ -31,13 +33,13 @@ const Login = ({ navigation, handleLogin }) => {
    const checkInput = () => {
 
       if (user_name.trim() === '') {
-         errorToast('user name cannot empty');
+         errorToast(t("screens.singin.error.user"));
       }
       else if (!validateEmail(user_name)) {
-         errorToast('this is not a valid email!!')
+         errorToast(t("screens.singin.error.email"))
       }
       else if (password.trim() === '') {
-         errorToast('password cannot empty');
+         errorToast(t("screens.singin.error.password"));
       }
       else {
 
@@ -53,13 +55,15 @@ const Login = ({ navigation, handleLogin }) => {
          </View>
          {/* page titre  */}
          <View>
-            <Text style={loginStyle.titre} > Sign in</Text>
+            <Text style={loginStyle.titre} >
+               {t("screens.singin.title")}
+            </Text>
          </View>
          {/* page body */}
          <View style={loginStyle.form}>
             <Input
-               label='Login'
-               placeholder='name@domaine.com'
+               label={t("screens.singin.label.name")}
+               placeholder={t("screens.singin.placeholder.login")}
                labelStyle={{ fontSize: 18, color: '#5a5a5a' }}
                leftIcon={
                   <Icon
@@ -73,8 +77,8 @@ const Login = ({ navigation, handleLogin }) => {
             />
 
             <Input
-               label='PassWord'
-               placeholder='password'
+               label={t("screens.singin.label.password")}
+               placeholder={t("screens.singin.placeholder.password")}
                labelStyle={{ fontSize: 18, color: '#5a5a5a' }}
                secureTextEntry={true}
                leftIcon={
@@ -100,13 +104,23 @@ const Login = ({ navigation, handleLogin }) => {
                   checkInput();
                }}
 
-            >Login</Button>
+            >{t("screens.singin.buttom")}</Button>
          </View>
-         <View>
-            <Text style={loginStyle.linkText} >do you not have an account ?
-               <Text style={loginStyle.link} onPress={() => navigation.navigate('register')} > click here</Text>
-            </Text>
 
+         <View style={{ flexDirection: 'row' }}>
+            <Text style={loginStyle.linkText} >{t("screens.singin.text.ask")} </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('register')} style={{ marginBottom: 0, marginLeft: -20 }}>
+               <Text style={{ ...loginStyle.link, marginTop: 25 }}  > {t("screens.singin.text.link")}</Text>
+            </TouchableOpacity>
+         </View>
+
+         <View>
+            <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
+               <Text>English</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => i18n.changeLanguage("fr")}>
+               <Text>French</Text>
+            </TouchableOpacity>
          </View>
       </ScrollView>
    )

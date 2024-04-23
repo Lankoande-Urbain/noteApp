@@ -9,15 +9,23 @@ import { Button, color } from '@rneui/base';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { API_BASE_URL } from '../../../apiConfig';
 import Toast from 'react-native-toast-message';
+import Header from '../../composentes/header';
+import { useTranslation } from 'react-i18next';
+
 
 const UpdateNote = ({ route, navigation }) => {
+
+   const { t } = useTranslation();
+
    const [message, setMessage] = useState('');
    const [titre, setTitre] = useState(route.params.paramTitre);
    const [descrip, setDescrip] = useState(route.params.paramDescrip);
    const [titreError, setTitreError] = useState('');
    const [descripError, setDescripError] = useState('');
+
    const inputTitre = React.createRef();
    const inputDescrip = React.createRef();
+
    const { paramId, paramTitre, paramDescrip } = route.params;
    const insets = useSafeAreaInsets();
 
@@ -27,12 +35,12 @@ const UpdateNote = ({ route, navigation }) => {
       setTitreError('');
       setMessage('');
       if (titre.trim() === '') {
-         setTitreError('Veillez Remplir le titre !');
+         setTitreError(t('screens.update.error.title'));
          inputTitre.current.focus();
          return;
       }
       else if (descrip.trim() === '') {
-         setDescripError('Veillez Remplir la description !');
+         setDescripError(t('screens.update.error.description'));
          inputDescrip.current.focus();
          return;
       }
@@ -50,21 +58,20 @@ const UpdateNote = ({ route, navigation }) => {
          });
 
          if (!response.ok) {
-            console.error('Erreur lors de l\'enregistrement des données');
+            console.error(t('screens.update.error.database'));
          }
 
          Toast.show({
             type: 'info',
-            text1: 'Info!!',
-            text2: 'La note a été modifiée',
+            text1: t('screens.update.info.text1'),
+            text2: t('screens.update.info.text2'),
             visibilityTime: 5000,
          });
-
          // Revenir à la page d'accueil
          navigation.goBack();
 
       } catch (error) {
-         console.error('Erreur lors de l\'enregistrement des données :', error);
+         console.error(t('screens.update.error.database'), error);
       }
    };
 
@@ -79,24 +86,19 @@ const UpdateNote = ({ route, navigation }) => {
             paddingRight: insets.right,
          }} >
          {/* header partie */}
-         <Header titre={'Update note'} />
+         <Header titre={t('screens.update.title')} />
          <View style={updateStyle.body} >
 
-
-            <View>
-               <Text style={updateStyle.title}>Update note</Text>
-               <DivBar />
-            </View>
 
             {/* Body view  */}
             <View style={updateStyle.form}>
                <Input
                   value={titre}
                   ref={inputTitre}
-                  placeholder='Entrer votre titre'
+                  placeholder={t('screens.update.placeholder.title')}
                   errorStyle={{ color: 'red' }}
                   errorMessage={titreError}
-                  label='Title'
+                  label={t('screens.update.label.title')}
                   inputStyle={{ color: COLOR.gris, fontStyle: 'italic' }}
                   labelStyle={{ color: COLOR.gris, fontWeight: 'bold', fontSize: 18 }}
 
@@ -105,11 +107,11 @@ const UpdateNote = ({ route, navigation }) => {
                <Input
                   value={descrip}
                   ref={inputDescrip}
-                  label='Description'
+                  label={t('screens.update.label.description')}
 
                   errorStyle={{ color: 'red' }}
                   errorMessage={descripError}
-                  placeholder='Entrer votre description'
+                  placeholder={t('screens.update.placeholder.description')}
                   inputStyle={{ color: COLOR.gris, fontStyle: 'italic' }}
                   labelStyle={{ color: COLOR.gris, fontWeight: 'bold', fontSize: 18 }}
 
@@ -130,9 +132,9 @@ const UpdateNote = ({ route, navigation }) => {
                   }}
                   // type='outline'
                   radius={'lg'}
-                  onPress={handleEnregistrer()}
+                  onPress={handleEnregistrer}
 
-               >Save</Button>
+               >{t('screens.update.button')}</Button>
 
             </View>
 

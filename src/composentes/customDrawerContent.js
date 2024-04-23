@@ -5,48 +5,65 @@ import { stopMapper } from 'react-native-reanimated';
 import { COLOR } from '../outils/constantes';
 import { Icon } from '@rneui/themed';
 import DrawerHeader from './drawerHeader';
+import { useTranslation } from 'react-i18next';
 
-function CustomDrawerContent(props) {
-   const { navigation } = props;
 
+function CustomDrawerContent({ props, handleLogout }) {
+
+   const { t } = useTranslation();
    return (
       <DrawerContentScrollView {...props}>
          {/* <DrawerItemList {...props} /> */}
          <DrawerHeader />
-         <View style={{ flex: 1, minHeight: 700 }}>
+         <View style={{ flex: 1, minHeight: 600 }}>
 
             <View style={styles.about}>
 
                <View style={styles.aboutHeader}>
                   <Icon name='info' color={COLOR.oran1} size={50} style={styles.aboutIcon} />
-                  <Text style={styles.aboutTitre}>About</Text>
+                  <Text style={styles.aboutTitre}>
+                     {t('screens.drawer.about')}
+                  </Text>
                </View>
                <View style={styles.aboutTextCard}>
                   <Text style={styles.aboutText}>
                      <View style={{ width: 35, backgroundColor: '#fff' }}></View>
-                     ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus est, sagittis nec ligula eget, sollicitudin egestas neque. Nunc id libero sapien. Fusce iaculis, odio ut ornare ultrices, magna lacus sollicitudin lorem, quis iaculis nulla justo et nibh
+                     {t('screens.drawer.text')}
                   </Text>
                </View>
                <View style={styles.athor}>
                   <View style={styles.aboutHeader}>
                      <Icon name='badge' color={COLOR.oran1} size={50} style={styles.aboutIcon} />
-                     <Text style={styles.aboutTitre}>Athor</Text>
+                     <Text style={styles.aboutTitre}>
+                        {t('screens.drawer.athor')}
+                     </Text>
                   </View>
                   <View style={styles.athorName}>
                      <Icon name='account-circle' color={COLOR.oran1} size={25} />
-                     <Text>Lankoande Urbain</Text>
+                     <Text style={{ color: COLOR.gris }}>Lankoande Urbain</Text>
                   </View>
                   <View style={styles.athorMail}>
                      <Icon name='alternate-email' color={COLOR.oran1} size={25} />
-                     <Text>lankoandeurbain8@gmail.com</Text>
+                     <Text style={{ color: COLOR.gris }}>lankoandeurbain8@gmail.com</Text>
                   </View>
                </View>
 
             </View>
             {/* btn Lougout */}
-            <TouchableOpacity style={styles.btnLogout}>
+            <TouchableOpacity style={styles.btnLogout}
+               // onPress={() => handleLogout()}
+
+               onPress={() => {
+                  Alert.alert(t('screens.drawer.btnOption.title'), t('screens.drawer.btnOption.body'), [
+                     { text: t('screens.drawer.btnOption.no'), style: 'cancel' },
+                     { text: t('screens.drawer.btnOption.yes'), onPress: () => handleLogout() },
+                  ]);
+               }}
+            >
                <Icon name='power-settings-new' color={COLOR.bg_White} size={33} style={styles.btnIcon} />
-               <Text style={styles.btnText}>logout</Text>
+               <Text style={styles.btnText}>
+                  {t('screens.drawer.btnLogout')}
+               </Text>
 
             </TouchableOpacity>
          </View>
@@ -93,7 +110,7 @@ const styles = StyleSheet.create({
    },
    aboutTitre: {
       color: COLOR.black,
-      fontSize: 24,
+      fontSize: 22,
       fontWeight: 'bold',
       alignSelf: 'flex-end',
 
@@ -104,6 +121,7 @@ const styles = StyleSheet.create({
    aboutText: {
       letterSpacing: 2,
       lineHeight: 30,
+      color: COLOR.gris,
 
    },
    athor: {
@@ -113,9 +131,11 @@ const styles = StyleSheet.create({
    athorName: {
       flexDirection: 'row',
       paddingTop: 10,
+      color: COLOR.gris,
    },
    athorMail: {
       flexDirection: 'row',
+      color: COLOR.gris,
    }
 });
 export default CustomDrawerContent;

@@ -13,26 +13,44 @@ import { Icon, Button } from '@rneui/themed';
 import { COLOR } from '../../outils/constantes';
 import Toast from 'react-native-toast-message';
 import Header from '../../composentes/header';
+import { useTranslation } from 'react-i18next';
 
-const Home = ({ navigation }) => {
+
+const Home = (props) => {
+   const { navigation } = props;
    const [notes, setNotes] = useState(null);
    const [userFullName, setUserFullName] = useState('');
+   const [isLoggedIn, setIsLoggedIn] = useState(null);
    const insets = useSafeAreaInsets();
+   const { t } = useTranslation();
 
-   const welcomeToast = () => {
-      Toast.show({
-         type: 'info',
-         text1: 'Hello',
-         text2: ' 👋nice to see you again ' + userFullName.toUpperCase(),
-         visibilityTime: 5000,
-      });
-   }
+
+
    useEffect(() => {
-      AsyncStorage.getItem('user_fullname').then(value => {
-         if (value !== null) {
-            setUserFullName(value);
+
+      const gestAsyncData = async () => {
+         const storedIsLogin = await AsyncStorage.getItem('isLogin');
+         if (storedIsLogin !== null) {
+            setIsLoggedIn(JSON.parse(storedIsLogin));
          }
-      }, []);
+
+         const storedFullname = await AsyncStorage.getItem('user_fullname');
+         if (storedFullname !== null) {
+            setUserFullName(storedFullname);
+         }
+      }
+      // gestAsyncData
+      if (isLoggedIn) {
+         Toast.show({
+            type: 'info',
+            text1: 'Hello',
+            text2: t("screens.home.text.bienvenue") + userFullName.toUpperCase(),
+            visibilityTime: 5000,
+         });
+      }
+      setTimeout(() => {
+         setIsLoggedIn(false);
+      }, 5000);
 
       // Fonction pour récupérer les notes depuis l'API
       const fetchNotesFromApi = async () => {
@@ -41,38 +59,30 @@ const Home = ({ navigation }) => {
                method: 'GET',
             });
             if (!response.ok) {
-               throw new Error('Erreur lors de la récupération des notes');
+               throw new Error(t("screens.home.error.database"));
             }
             const data = await response.json();
             setNotes(data || null); // Met à jour l'état avec les données renvoyées par l'API ou null si les données sont vides
          } catch (error) {
-            console.error('Erreur lors de la récupération des notes :', error);
+            console.error(t("screens.home.error.database"), error);
          }
       };
 
       fetchNotesFromApi();
    });
-   useEffect(() => {
-      Toast.show({
-         type: 'info',
-         text1: 'Hello',
-         text2: ' 👋nice to see you again ' + userFullName.toUpperCase(),
-         visibilityTime: 5000,
-      });
-   }, []);
 
    return (
       <View style={{ flex: 1, backgroundColor: COLOR.oran1 }}>
          <View style={{ zIndex: 1000 }}>
             <Toast />
          </View>
-         <Header titre={'List of Notes'} />
+         <Header
+            titre={t("screens.home.title")}
+            isDrawerShown={true}
+            onSubmit={() => navigation.openDrawer()}
+         />
          <View style={homeStyle.body}>
-            <Text style={homeStyle.title}>List of Notes</Text>
-
-            <DivBar />
-
-            <View>
+            <View >
                {!notes || notes.length === 0 ? <MonImageSvg width={400} height={400} /> :
                   <FlatList
                      style={{ maxHeight: 640, }}

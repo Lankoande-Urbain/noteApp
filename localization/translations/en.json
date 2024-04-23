@@ -1,0 +1,121 @@
+{
+   "language": "English",
+   "screens": {
+      "singin": {
+         "title": "Sign in",
+         "label": {
+            "name": "User name",
+            "password": "Password"
+         },
+         "placeholder": {
+            "login": "name@domain.com",
+            "password": "password"
+         },
+         "buttom": "Login",
+         "text": {
+            "ask": "do you not have an account ?",
+            "link": "click here"
+         },
+         "error": {
+            "user": "user name cannot empty !!",
+            "email": "this is not a valid email !!",
+            "password": "password cannot empty !!"
+         }
+      },
+      "singup": {
+         "title": "Sign up",
+         "placeholder": {
+            "fullname": "Full Name",
+            "userName": "name@domain.com",
+            "password": "password",
+            "confpassword": "Confirm Password"
+         },
+         "buttom": "Register",
+         "error": {
+            "fullName": "the full name cannot empty !!",
+            "userName": "user name cannot empty !!",
+            "email": "this is not a valid email !!",
+            "password": "password cannot empty !!",
+            "checkPassword1": "check password cannot empty !!",
+            "checkPassword2": "the passwords cannot different !!"
+         }
+      },
+      "home": {
+         "title": "List of Notes",
+         "text": {
+            "bienvenue": "👋nice to see you again "
+         },
+         "error": {
+            "database": "Erreur lors de la récupération des notes !! "
+         }
+      },
+      "create": {
+         "title": "Create note",
+         "error": {
+            "title": "Title cannot be empty!!",
+            "description": "Description cannot be empty !!",
+            "database": "Error sending data !! "
+         },
+         "info": {
+            "text1": "Info!!",
+            "tedxt2": "The note was created"
+         },
+         "label": {
+            "title": "Title",
+            "description": "Description"
+         },
+         "placeholder": {
+            "title": "Enter your title",
+            "description": "Enter your description"
+         },
+         "button": "Save"
+      },
+      "update": {
+         "title": "Update note",
+         "error": {
+            "title": "Title cannot be empty!!",
+            "description": "Description cannot be empty !!",
+            "database": "Error sending data !! "
+         },
+         "info": {
+            "text1": "Info!!",
+            "tedxt2": "the note was updated"
+         },
+         "label": {
+            "title": "Title",
+            "description": "Description"
+         },
+         "placeholder": {
+            "title": "Enter your title",
+            "description": "Enter your description"
+         },
+         "button": "Save"
+      },
+      "delete": {
+         "info": {
+            "text1": "Info!!",
+            "text2": "The note has been deleted"
+         },
+         "text": {
+            "title": "Confirmation",
+            "body": "Are you sure you want to delete this note ?"
+         },
+         "btnOption": {
+            "yes": "Yes",
+            "no": "No"
+         }
+      },
+      "drawer": {
+         "about": "About",
+         "athor": "Athor",
+         "text": "ipsum dolor sit amet, consectetur adipiscing elit. Nunc purus est, sagittis nec ligula eget, sollicitudin egestas neque. Nunc id libero sapien. Fusce iaculis, odio ut ornare ultrices, magna lacus sollicitudin lorem, quis iaculis nulla justo et nibh",
+         "btnOption": {
+            "yes": "Yes",
+            "no": "No",
+            "title": "Confirmation",
+            "body": "Are you sure you want to logout ?"
+         },
+         "btnLogout": "Logout"
+      }
+   }
+}
