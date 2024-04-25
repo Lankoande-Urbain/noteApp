@@ -83,16 +83,19 @@ const homeStyle = StyleSheet.create({
    },
    timeCard: {
       flexDirection: 'row',
+      paddingHorizontal: 3,
+      // backgroundColor: 'red'
    },
    timeIcon: {
       marginTop: 'auto',
       marginBottom: 'auto',
-      fontSize: 14,
+      fontSize: 18,
+      marginHorizontal: 3,
    },
    timeText: {
       color: COLOR.gris,
       fontStyle: 'italic',
-      fontSize: 12,
+      fontSize: 13,
       marginTop: 'auto',
       marginBottom: 'auto',
       paddingRight: 5,

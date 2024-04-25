@@ -10,7 +10,8 @@ const DivBar = () => {
             width: 300,
             backgroundColor: COLOR.oran1,
             alignSelf: 'center',
-            marginVertical: 10
+            marginVertical: 10,
+            marginTop: 20,
          }}
       >
 

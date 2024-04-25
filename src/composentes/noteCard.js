@@ -63,13 +63,25 @@ const Card = ({ item, navigation }) => {
 
             <View style={homeStyle.timeCard}>
                <View style={{ flexDirection: 'row' }}>
-                  <Icons name="today" color={COLOR.gris} style={homeStyle.timeIcon} />
-                  <Text style={homeStyle.timeText}>{noteDate}</Text>
+                  <Icons
+                     name="today"
+                     color={COLOR.gris}
+                     style={homeStyle.timeIcon}
+                  />
+                  <Text style={homeStyle.timeText}>
+                     {noteDate}
+                  </Text>
                </View>
 
                <View style={{ flexDirection: 'row' }}>
-                  <Icons name="schedule" color={COLOR.gris} style={homeStyle.timeIcon} />
-                  <Text style={homeStyle.timeText}>{NoteTime}</Text>
+                  <Icons
+                     name="schedule"
+                     color={COLOR.gris}
+                     style={homeStyle.timeIcon}
+                  />
+                  <Text style={homeStyle.timeText}>
+                     {NoteTime}
+                  </Text>
                </View>
             </View>
 

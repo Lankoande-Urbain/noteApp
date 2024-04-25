@@ -19,6 +19,7 @@ const createStyle = StyleSheet.create({
       marginVertical: 15,
    },
    body: {
+      paddingTop: 35,
       elevation: 5,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,

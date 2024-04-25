@@ -58,7 +58,7 @@ const UpdateNote = ({ route, navigation }) => {
          });
 
          if (!response.ok) {
-            console.error(t('screens.update.error.database'));
+            console.log(t('screens.update.error.database'));
          }
 
          Toast.show({
@@ -71,7 +71,7 @@ const UpdateNote = ({ route, navigation }) => {
          navigation.goBack();
 
       } catch (error) {
-         console.error(t('screens.update.error.database'), error);
+         console.log(t('screens.update.error.database'), error);
       }
    };
 
@@ -86,7 +86,11 @@ const UpdateNote = ({ route, navigation }) => {
             paddingRight: insets.right,
          }} >
          {/* header partie */}
-         <Header titre={t('screens.update.title')} />
+         <Header
+            titre={t('screens.update.title')}
+            isDrawerShown={false}
+            onSubmit={() => navigation.goBack()}
+         />
          <View style={updateStyle.body} >
 
 

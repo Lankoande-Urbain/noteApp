@@ -109,7 +109,7 @@ export
          <SafeAreaProvider>
             <NavigationContainer>
                <StatusBar backgroundColor={COLOR.oran1} barStyle="light-content" />
-               <Stack.Navigator initialRouteName='login' screenOptions={{ headerTitle: '', headerTransparent: true, }} >
+               <Stack.Navigator initialRouteName='login' screenOptions={{ headerTitle: '', headerTransparent: true, headerShown: false }} >
                   {isUserLoggedIn ? (
                      <>
                         <Stack.Screen name="home" component={OptionScreen} options={{

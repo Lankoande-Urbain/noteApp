@@ -47,7 +47,8 @@
          },
          "error": {
             "database": "Erreur lors de la récupération des notes !! "
-         }
+         },
+         "search": "Search by title..."
       },
       "create": {
          "title": "Create note",
@@ -58,7 +59,7 @@
          },
          "info": {
             "text1": "Info!!",
-            "tedxt2": "The note was created"
+            "text2": "The note was created"
          },
          "label": {
             "title": "Title",
@@ -117,5 +118,9 @@
          },
          "btnLogout": "Logout"
       }
+   },
+   "langue": {
+      "us": "En",
+      "fr": "Fr"
    }
 }

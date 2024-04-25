@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { en, fr } from "./translations";
+import { us, fr } from "./translations";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const STORE_LANGUAGE_KEY = "settings.lang";
@@ -34,8 +34,8 @@ const languageDetectorPlugin = {
    },
 };
 const resources = {
-   en: {
-      translation: en,
+   us: {
+      translation: us,
    },
    fr: {
       translation: fr,
@@ -46,7 +46,7 @@ i18n.use(initReactI18next).use(languageDetectorPlugin).init({
    resources,
    compatibilityJSON: 'v3',
    // fallback language is set to english
-   fallbackLng: "en",
+   fallbackLng: "us",
    interpolation: {
       escapeValue: false,
    },

@@ -7,42 +7,68 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native';
 import { Image } from 'react-native';
 import { Icon } from '@rneui/themed';
+import CountryFlag from "react-native-country-flag";
+import { useTranslation } from 'react-i18next';
 
-const data = [
-   { label: 'Anglais', value: '1' },
-   { label: 'Français', value: '2' },
-];
+
 
 const Header = ({ titre, isDrawerShown, onSubmit }) => {
 
-   const [value, setValue] = useState(null);
+   const [value, setValue] = useState('us');
    const [isFocus, setIsFocus] = useState(false);
+   const { t, i18n } = useTranslation();
 
 
+   const data = [
+      { label: t('langue.us'), value: 'us' },
+      { label: t('langue.fr'), value: 'fr' },
+   ];
+
+   const ChangeLange = (lang) => {
+      // console.log(lang)
+      i18n.changeLanguage(lang);
+   }
    return (
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-         {isDrawerShown && (
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', height: 55, }}>
+         {isDrawerShown ?
+            // icon menu
             <TouchableOpacity
+               style={{
+                  marginTop: 'auto',
+                  marginBottom: 'auto'
+               }}
                activeOpacity={1}
                onPress={onSubmit}
             >
-               <Icon name='menu' color={'#fff'} size={36} style={{ marginLeft: 15 }} />
+               <Icon name='menu' color={'#fff'} size={36} style={{ marginLeft: 15, }} />
             </TouchableOpacity>
-         )}
+            :
+            // icon de goback
+            <TouchableOpacity
+               style={{
+                  marginTop: 'auto',
+                  marginBottom: 'auto'
+               }}
+               activeOpacity={1}
+               onPress={onSubmit}
+            >
+               <Icon name='west' color={'#fff'} size={36} style={{ marginLeft: 15, }} />
+            </TouchableOpacity>
+         }
          <View style={headerStyles.header}>
-            <Text style={headerStyles.title}>{titre}</Text>
-
+            <Text style={[headerStyles.title,]}>
+               {titre}
+            </Text>
          </View>
 
          <View>
             <View style={styles.container}>
-
                <Dropdown
                   style={[styles.dropdown, isFocus && { borderColor: COLOR.oran1 }]}
                   placeholderStyle={styles.placeholderStyle}
                   selectedTextStyle={styles.selectedTextStyle}
                   inputSearchStyle={styles.inputSearchStyle}
-                  iconStyle={styles.iconStyle}
+
                   iconColor='#fff'
                   data={data}
                   // search
@@ -50,7 +76,6 @@ const Header = ({ titre, isDrawerShown, onSubmit }) => {
                   labelField="label"
                   valueField="value"
                   placeholder={!isFocus ? 'Select ' : '...'}
-                  searchPlaceholder="Search..."
                   value={value}
                   itemTextStyle={{ color: COLOR.oran1 }}
 
@@ -60,15 +85,11 @@ const Header = ({ titre, isDrawerShown, onSubmit }) => {
                   onChange={item => {
                      setValue(item.value);
                      setIsFocus(false);
+                     ChangeLange(item.value);
                   }}
                   renderLeftIcon={() => (
-                     <AntDesign
-                        style={styles.icon}
-                        color={isFocus ? COLOR.oran1 : COLOR.bg_White}
-                        name="Safety"
-                        size={20}
 
-                     />
+                     <CountryFlag isoCode={value} size={16} style={{}} />
 
                   )}
                />
@@ -81,10 +102,8 @@ const Header = ({ titre, isDrawerShown, onSubmit }) => {
 const headerStyles = StyleSheet.create({
 
    header: {
-      backgroundColor: COLOR.oran1,
-      padding: 7,
-      height: 65,
-      justifyContent: 'space-between',
+      minWidth: 260,
+      maxWidth: 280,
 
    },
    title: {
@@ -93,8 +112,9 @@ const headerStyles = StyleSheet.create({
       fontSize: FONTSIZE.title,
       textTransform: 'uppercase',
       alignSelf: 'center',
-      marginVertical: 15,
-      marginLeft: 75,
+      marginTop: 'auto',
+      marginBottom: 'auto',
+
    },
 })
 
@@ -102,29 +122,19 @@ const headerStyles = StyleSheet.create({
 const styles = StyleSheet.create({
    container: {
       backgroundColor: COLOR.oran1,
-      width: 125,
-      marginRight: 15
+      width: 85,
+      marginTop: 'auto',
+      marginBottom: 'auto'
+      // marginRight: 15
    },
    dropdown: {
       height: 50,
       borderColor: COLOR.bg_White,
-      borderRadius: 8,
       paddingHorizontal: 8,
 
    },
    icon: {
       marginRight: 5,
-   },
-   label: {
-      position: 'absolute',
-      backgroundColor: COLOR.oran1,
-      left: 22,
-      top: 15,
-      fontWeight: 'bold',
-      zIndex: 999,
-      marginLeft: 7,
-      fontSize: 15,
-      color: '#fff'
    },
    placeholderStyle: {
       fontSize: 16,
@@ -133,12 +143,9 @@ const styles = StyleSheet.create({
    selectedTextStyle: {
       fontSize: 16,
       color: COLOR.bg_White,
+      fontWeight: 'bold',
+      marginLeft: 3
    },
-   iconStyle: {
-      width: 25,
-      height: 25,
-      marginLeft: -10
 
-   },
 });
 export default Header

@@ -11,7 +11,7 @@ import { TouchableOpacity } from 'react-native';
 
 const Login = ({ navigation, handleLogin }) => {
 
-   const { t, i18n } = useTranslation();
+   const { t, } = useTranslation();
    const [user_name, setUser_name] = useState('');
    const [password, setPassword] = useState('');
 
@@ -114,14 +114,7 @@ const Login = ({ navigation, handleLogin }) => {
             </TouchableOpacity>
          </View>
 
-         <View>
-            <TouchableOpacity onPress={() => i18n.changeLanguage("en")}>
-               <Text>English</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => i18n.changeLanguage("fr")}>
-               <Text>French</Text>
-            </TouchableOpacity>
-         </View>
+
       </ScrollView>
    )
 }

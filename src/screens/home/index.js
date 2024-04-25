@@ -1,5 +1,5 @@
 import React, { StrictMode, useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, Modal, Pressable, Alert, ToastAndroid } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image, Modal, Pressable, Alert, ToastAndroid, TextInput } from 'react-native';
 import homeStyle from './style';
 import Card from '../../composentes/noteCard';
 import DivBar from '../../composentes/divBar';
@@ -9,12 +9,11 @@ import MonImageSvg from './../../doc/svg/empty.svg';
 import Avatar from '../../composentes/avatar';
 import { API_BASE_URL } from '../../../apiConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Icon, Button } from '@rneui/themed';
+import { Icon, Button, Input, SearchBar } from '@rneui/themed';
 import { COLOR } from '../../outils/constantes';
 import Toast from 'react-native-toast-message';
 import Header from '../../composentes/header';
 import { useTranslation } from 'react-i18next';
-
 
 const Home = (props) => {
    const { navigation } = props;
@@ -23,9 +22,12 @@ const Home = (props) => {
    const [isLoggedIn, setIsLoggedIn] = useState(null);
    const insets = useSafeAreaInsets();
    const { t } = useTranslation();
+   const [search, setSearch] = useState("");
 
-
-
+   const updateSearch = (search) => {
+      setSearch(search);
+      // console.log(search);
+   };
    useEffect(() => {
 
       const gestAsyncData = async () => {
@@ -68,7 +70,27 @@ const Home = (props) => {
          }
       };
 
-      fetchNotesFromApi();
+      // Fonction pour récupérer les notes depuis l'API
+      const fetchNotesFromApiRech = async (titre) => {
+         try {
+            const response = await fetch(`${API_BASE_URL}/${titre}`, {
+               method: 'GET',
+            });
+            if (!response.ok) {
+               throw new Error(t("screens.home.error.database"));
+            }
+            const data = await response.json();
+            setNotes(data || null); // Met à jour l'état avec les données renvoyées par l'API ou null si les données sont vides
+         } catch (error) {
+            console.log(t("screens.home.error.database"), error);
+         }
+      };
+
+      if (search.trim() === '') {
+         fetchNotesFromApi();
+      } else {
+         fetchNotesFromApiRech(search);
+      }
    });
 
    return (
@@ -82,6 +104,35 @@ const Home = (props) => {
             onSubmit={() => navigation.openDrawer()}
          />
          <View style={homeStyle.body}>
+            <View style={{ marginTop: 20, flexDirection: 'row', }}>
+               <SearchBar
+                  platform="android"
+                  lightTheme
+                  containerStyle={{
+                     width: 364,
+                     height: 50,
+                     paddingHorizontal: 10,
+                     marginHorizontal: 15,
+                     borderColor: '#666',
+                     borderWidth: 1,
+                     borderRadius: 20,
+                     elevation: 1000,
+                     justifyContent: 'center'
+                  }}
+                  // inputContainerStyle={{ width: 400, }}
+
+                  placeholder={t('screens.home.search')}
+                  placeholderTextColor={'#888'}
+                  onChangeText={updateSearch}
+                  onCancel={() => updateSearch("")}
+                  onClearText={() => console.log(onClearText())}
+
+                  value={search}
+               />
+            </View>
+
+            <DivBar />
+
             <View >
                {!notes || notes.length === 0 ? <MonImageSvg width={400} height={400} /> :
                   <FlatList

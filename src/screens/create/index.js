@@ -54,7 +54,7 @@ const CreacteNote = ({ navigation }) => {
          });
 
          if (!response.ok) {
-            throw new Error(t('screens.create.error.database'));
+            throw new log(t('screens.create.error.database'));
          }
 
          // Afficher le toast
@@ -69,7 +69,7 @@ const CreacteNote = ({ navigation }) => {
          navigation.goBack();
 
       } catch (error) {
-         console.error(t('screens.create.error.database'), error);
+         console.log(t('screens.create.error.database'), error);
       }
    };
 
@@ -85,7 +85,11 @@ const CreacteNote = ({ navigation }) => {
          }}
       >
          {/* header partie */}
-         <Header titre={t('screens.create.title')} />
+         <Header
+            titre={t('screens.create.title')}
+            isDrawerShown={false}
+            onSubmit={() => navigation.goBack()}
+         />
          <View style={createStyle.body}>
 
             {/* Body view  */}

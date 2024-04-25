@@ -25,7 +25,7 @@
       "singup": {
          "title": "S'inscrire",
          "placeholder": {
-            "fullname": "Nom complete",
+            "fullname": "Nom complet",
             "userName": "nom@domaine.com",
             "password": "Mote de passe",
             "confpassword": "Confirmer le mot de passe"
@@ -41,16 +41,17 @@
          }
       },
       "home": {
-         "title": "List de Note",
+         "title": "Liste de Note",
          "text": {
-            "bienvenue": "👋nice to see you again "
+            "bienvenue": "👋 Ravie de vous revoir "
          },
          "error": {
             "database": "Erreur lors de la récupération des notes !! "
-         }
+         },
+         "search": "Recherche par titre..."
       },
       "create": {
-         "title": "Creation de note",
+         "title": "Création de note",
          "error": {
             "title": "Le titre ne peux pas être vide !!",
             "description": "La description ne peux pas être vide !!",
@@ -117,5 +118,9 @@
          },
          "btnLogout": "Deconnecté"
       }
+   },
+   "langue": {
+      "us": "En",
+      "fr": "Fr"
    }
 }

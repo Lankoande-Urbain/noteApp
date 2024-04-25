@@ -26,6 +26,7 @@ const updateStyle = StyleSheet.create({
 
    },
    body: {
+      paddingTop: 35,
       elevation: 5,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
