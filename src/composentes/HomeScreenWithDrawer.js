@@ -2,8 +2,9 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from '../screens/home';
 import CustomDrawerContent from './customDrawerContent';
-import Setting from '../screens/setting';
+import Setting from '../screens/Profile';
 import { COLOR } from '../outils/constantes';
+import Profile from '../screens/Profile';
 
 
 const Drawer = createDrawerNavigator();
@@ -21,6 +22,7 @@ function HomeScreenWithDrawer({ handleLogout }) {
       }}
          drawerContent={props => <CustomDrawerContent {...props} handleLogout={handleLogout} />}>
          <Drawer.Screen name="Option" component={Home} />
+         <Drawer.Screen name='profile' component={Profile} />
       </Drawer.Navigator>
    );
 }

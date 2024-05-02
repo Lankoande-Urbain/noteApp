@@ -29,7 +29,7 @@ const Header = ({ titre, isDrawerShown, onSubmit }) => {
       i18n.changeLanguage(lang);
    }
    return (
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', height: 55, }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', height: 65, }}>
          {isDrawerShown ?
             // icon menu
             <TouchableOpacity
@@ -102,8 +102,9 @@ const Header = ({ titre, isDrawerShown, onSubmit }) => {
 const headerStyles = StyleSheet.create({
 
    header: {
-      minWidth: 260,
+      minWidth: 200,
       maxWidth: 280,
+      // backgroundColor: 'red'
 
    },
    title: {

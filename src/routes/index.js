@@ -70,8 +70,8 @@ export
                   let len = results.rows.length;
                   if (len > 0) {
                      setIsUserLoggedIn(true);
-                     AsyncStorage.setItem('user_id', results.rows.item(0).user_id.toString());
-                     AsyncStorage.setItem('user_fullname', results.rows.item(0).user_fullname.toString());
+                     AsyncStorage.setItem('userId', results.rows.item(0).user_id.toString());
+                     AsyncStorage.setItem('userFullname', results.rows.item(0).user_fullname.toString());
                      AsyncStorage.setItem('isLogin', JSON.stringify(true));
                   } else {
                      errorToast('access refuse retry');

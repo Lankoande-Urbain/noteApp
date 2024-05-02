@@ -2,13 +2,13 @@ import { Text, TouchableOpacity, View } from "react-native-picasso";
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import homeStyle from "../screens/home/style";
 import { Alert, Animated } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { COLOR } from "../outils/constantes";
 import { API_BASE_URL } from "../../apiConfig";
 import Toast from "react-native-toast-message";
 import { useTranslation } from 'react-i18next';
 import EntypoIcon from 'react-native-vector-icons/Entypo'
-const Card = ({ item, navigation }) => {
+const Card = ({ item, navigation, fetchNotesFromApi }) => {
 
 
    const { t } = useTranslation();
@@ -27,15 +27,16 @@ const Card = ({ item, navigation }) => {
             method: 'DELETE',
          });
          if (!response.ok) {
-            throw new Error('Erreur lors de la supresion de la note');
+            console.log('Erreur lors de la suppresion de la note');
 
          }
          Toast.show({
             type: 'info',
             text1: t('screens.delete.info.text1'),
             text2: t('screens.delete.info.text2'),
-            visibilityTime: 5000,
+            visibilityTime: 500,
          });
+         fetchNotesFromApi();
       } catch (error) {
          console.error('Erreur :', error);
       }
@@ -44,7 +45,7 @@ const Card = ({ item, navigation }) => {
    const toggleText = () => {
       setTextVisibility(!isTextVisible);
       Animated.timing(heightAnim, {
-         toValue: isTextVisible ? 0 : item.description.length * 0.5 > 20 ? (item.description.length * 0.5) + 10 : 25, // Modifier la valeur en fonction de l'état
+         toValue: isTextVisible ? 0 : item.description.length * 0.5 > 20 ? (item.description.length * 0.5) + 18 : 25, // Modifier la valeur en fonction de l'état
          duration: 1000, // Durée de l'animation
          useNativeDriver: false, // Ajouter cette ligne si vous utilisez une version de React Native < 0.62
       }).start();
@@ -100,14 +101,7 @@ const Card = ({ item, navigation }) => {
                      })
                   }}
                />
-               {/* <Icons name='delete' style={{ ...homeStyle.icon, color: 'red' }}
-                  onPress={() => {
-                     Alert.alert(t('screens.delete.text.title'), t('screens.delete.text.body'), [
-                        { text: t('screens.delete.btnOption.no'), style: 'cancel' },
-                        { text: t('screens.delete.btnOption.yes'), onPress: () => deleteNOTE(item.id) },
-                     ]);
-                  }}
-               /> */}
+
             </View>
          </View>
          <EntypoIcon name="circle-with-cross" size={36} color={'red'}

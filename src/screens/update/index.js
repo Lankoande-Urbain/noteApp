@@ -65,10 +65,10 @@ const UpdateNote = ({ route, navigation }) => {
             type: 'info',
             text1: t('screens.update.info.text1'),
             text2: t('screens.update.info.text2'),
-            visibilityTime: 5000,
+            visibilityTime: 3000,
          });
          // Revenir à la page d'accueil
-         navigation.goBack();
+         navigation.replace('home');
 
       } catch (error) {
          console.log(t('screens.update.error.database'), error);
@@ -125,8 +125,19 @@ const UpdateNote = ({ route, navigation }) => {
                <Text style={updateStyle.valideMessage}>{message}</Text>
 
                <Button
+
                   buttonStyle={{
-                     width: 150, marginLeft: 'auto', marginRight: 'auto', fontSize: 18
+                     width: 280,
+                     elevation: 10,
+                     alignSelf: 'center',
+                     borderRadius: 25,
+                     margin: 15,
+                  }}
+
+                  titleStyle={{
+                     fontWeight: 'bold',
+                     fontSize: 21,
+                     letterSpacing: 2.5,
                   }}
                   ViewComponent={LinearGradient} // Don't forget this!
                   linearGradientProps={{
@@ -135,10 +146,11 @@ const UpdateNote = ({ route, navigation }) => {
                      end: { x: 1, y: 0.5 },
                   }}
                   // type='outline'
-                  radius={'lg'}
+                  // radius={'lg'}
                   onPress={handleEnregistrer}
-
-               >{t('screens.update.button')}</Button>
+               >
+                  {t('screens.update.button')}
+               </Button>
 
             </View>
 

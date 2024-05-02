@@ -9,12 +9,12 @@ const homeStyle = StyleSheet.create({
    headerDrawer: {
       flexDirection: 'row',
       backgroundColor: COLOR.oran1,
-      padding: 5,
+      padding: 10,
       justifyContent: 'space-between',
-      marginTop: -4,
+      marginTop: -5,
       elevation: 5,
-      borderBottomLeftRadius: 15,
-      borderBottomRightRadius: 15,
+      borderBottomLeftRadius: 25,
+      borderBottomRightRadius: 25,
 
 
    },
@@ -45,21 +45,18 @@ const homeStyle = StyleSheet.create({
       marginVertical: 15,
    },
    body: {
-      elevation: 5,
+      // elevation: 5,
       borderTopLeftRadius: 25,
       borderTopRightRadius: 25,
       backgroundColor: '#fff',
       flex: 1,
-      shadowColor: COLOR.black,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
+
    },
 
    card: {
-      backgroundColor: 'white',
-      elevation: 7,
-      marginTop: 20,
+      backgroundColor: '#fff',
+      elevation: 3,
+      marginTop: 15,
       marginHorizontal: 25,
       borderRadius: 15,
       borderColor: COLOR.oran1,
@@ -71,11 +68,11 @@ const homeStyle = StyleSheet.create({
    },
    cardTitle: {
       fontSize: 17,
-      marginBottom: 5,
+      marginBottom: 3,
       fontWeight: 'bold',
       color: COLOR.black,
       textAlign: 'center',
-      elevation: 5,
+      // elevation: 3,
    },
 
    cardInfo: {
@@ -119,14 +116,16 @@ const homeStyle = StyleSheet.create({
       height: 350,
    },
    btnAdd: {
-      elevation: 100,
+      // elevation: 10,
       position: 'absolute',
       right: 0,
       bottom: 0,
       zIndex: 1000,
-      shadowColor: COLOR.black,
-      shadowOffset: { width: 1, height: 1 },
-      shadowOpacity: 0.50,
+      // shadowColor: COLOR.black,
+      // shadowOffset: { width: 1, height: 1 },
+      // shadowOpacity: 1,
+      backgroundColor: '#fff',
+      borderRadius: 50
 
    },
 

@@ -9,11 +9,11 @@ const BtnAdd = () => {
       style={{
          fontSize: 72,
          color: COLOR.oran1,
-         elevation: 5,
-         shadowColor: COLOR.black,
-         shadowOffset: { width: 2, height: 2 },
-         shadowOpacity: 0.75,
-         elevation: 100,
+         shadowColor: 'red',
+         shadowOffset: { width: 0, height: 0 },
+         shadowOpacity: 1,
+         elevation: 10,
+         margin: -3
       }}
       name='add-circle-sharp' />;
 }

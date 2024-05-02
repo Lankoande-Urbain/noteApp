@@ -11,6 +11,7 @@ import { API_BASE_URL } from '../../../apiConfig';
 import Toast from 'react-native-toast-message';
 import Header from '../../composentes/header';
 import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const CreacteNote = ({ navigation }) => {
@@ -40,7 +41,8 @@ const CreacteNote = ({ navigation }) => {
          inputDescrip.current.focus();
          return;
       }
-
+      const userId = await AsyncStorage.getItem('userId');
+      // console.log(userId);
       try {
          const response = await fetch(`${API_BASE_URL}`, {
             method: 'POST',
@@ -50,6 +52,8 @@ const CreacteNote = ({ navigation }) => {
             body: JSON.stringify({
                titre: titre,
                description: descrip,
+               userId: userId,
+
             }),
          });
 
@@ -66,7 +70,7 @@ const CreacteNote = ({ navigation }) => {
          });
 
          // Revenir à la page d'accueil
-         navigation.goBack();
+         navigation.replace('home');
 
       } catch (error) {
          console.log(t('screens.create.error.database'), error);
@@ -135,8 +139,20 @@ const CreacteNote = ({ navigation }) => {
 
                <Button
                   buttonStyle={{
-                     width: 150, borderWidth: 2, borderColor: '#fff', marginLeft: 'auto', marginRight: 'auto', fontSize: 18,
+                     width: 280,
+                     marginLeft: 'auto',
+                     marginRight: 'auto',
+                     elevation: 10,
+                     borderRadius: 25,
+                     margin: 15,
                   }}
+
+                  titleStyle={{
+                     fontWeight: 'bold',
+                     fontSize: 21,
+                     letterSpacing: 2.5,
+                  }}
+
                   ViewComponent={LinearGradient} // Don't forget this!
                   linearGradientProps={{
                      colors: ["#FF9800", "#F44336"],
@@ -144,8 +160,9 @@ const CreacteNote = ({ navigation }) => {
                      end: { x: 1, y: 0.5 },
                   }}
                   // type='outline'
-                  radius={'lg'}
+                  // radius={'lg'}
                   onPress={handleEnregistrer}
+
 
                >{t('screens.create.button')}</Button>
 

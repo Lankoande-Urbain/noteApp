@@ -117,6 +117,20 @@
             "body": "êtes vous sûr de vouloir vous deconnecté ?"
          },
          "btnLogout": "Deconnecté"
+      },
+      "profile": {
+         "title": "Profil",
+         "label": {
+            "fullname": "Nom & Prénom",
+            "email": "Email",
+            "password": "Not de passe"
+         },
+         "placeholder": {
+            "fullname": "Entrer votre nom & prénom",
+            "email": "Entrer votre email",
+            "password": "Entrer votre not de passe"
+         },
+         "button": "Mise à jour"
       }
    },
    "langue": {

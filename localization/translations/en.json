@@ -117,6 +117,20 @@
             "body": "Are you sure you want to logout ?"
          },
          "btnLogout": "Logout"
+      },
+      "profile": {
+         "title": "Profile",
+         "label": {
+            "fullname": "Full name",
+            "email": "Email",
+            "password": "Password"
+         },
+         "placeholder": {
+            "fullname": "Enter your fullname",
+            "email": "Enter your email",
+            "password": "Enter your password"
+         },
+         "button": "Update"
       }
    },
    "langue": {

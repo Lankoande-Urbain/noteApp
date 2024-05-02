@@ -8,9 +8,11 @@ const DrawerHeader = () => {
    const [userFullName, setUserFullName] = useState('');
 
    useEffect(() => {
-      AsyncStorage.getItem('user_fullname').then(value => {
+      AsyncStorage.getItem('userFullname').then(value => {
          if (value !== null) {
             setUserFullName(value);
+         } else {
+            console.log("setUserFullName est nulle");
          }
       }, []);
    }, [])
@@ -18,7 +20,7 @@ const DrawerHeader = () => {
    return (
       <View style={homeStyle.headerDrawer}>
          <Text style={homeStyle.headerDrawerTitre} >{userFullName.toUpperCase()}</Text>
-         <Avatar fullName={userFullName} size={55} />
+         <Avatar fullName={userFullName} size={63} />
       </View>
    )
 }
