@@ -19,17 +19,16 @@ const Home = (props) => {
 
    const { navigation } = props;
    const [notes, setNotes] = useState(null);
-   const [userFullName, setUserFullName] = useState('');
    const [isLoggedIn, setIsLoggedIn] = useState(true);
    const insets = useSafeAreaInsets();
    const { t } = useTranslation();
    const [search, setSearch] = useState('');
    const [userId, setUserId] = useState('');
    const [isReload, setIsReload] = useState(false);
+   const [fullname, setFullname] = useState(false);
 
    const updateSearch = (search) => {
       setSearch(search);
-      // console.log(search);
    };
 
    const isFocused = useIsFocused();
@@ -39,29 +38,26 @@ const Home = (props) => {
       const storedFullname = await AsyncStorage.getItem('userFullname');
       const storedUserId = await AsyncStorage.getItem('userId');
 
-      // console.log("storedIsLogin:  " + storedIsLogin);
-      // console.log("storedFullname: " + storedFullname);
-
-      setUserId(storedUserId)
-      setIsLoggedIn(storedIsLogin)
+      setUserId(storedUserId);
+      setIsLoggedIn(storedIsLogin);
 
       if (isLoggedIn) {
-         // console.log('Exercution du toast');
          Toast.show({
             type: 'info',
             text1: 'Hello',
             text2: t("screens.home.text.bienvenue") + storedFullname.toUpperCase(),
-            visibilityTime: 5000,
+            visibilityTime: 3500,
          });
          setIsLoggedIn(false);
-      }
+      };
    };
-
 
    useEffect(() => {
 
-      gestAsyncData()
-   }, [isFocused])
+      if (isLoggedIn) {
+         gestAsyncData()
+      }
+   }, [isLoggedIn == true])
 
    useEffect(() => {
       // Fonction pour récupérer les notes depuis l'API
@@ -91,7 +87,7 @@ const Home = (props) => {
 
    return (
       <View style={{ flex: 1, backgroundColor: COLOR.oran1 }}>
-         <View style={{ zIndex: 1000 }}>
+         <View style={{ zIndex: 100 }}>
             <Toast />
          </View>
          <Header

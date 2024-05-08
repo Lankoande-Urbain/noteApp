@@ -130,7 +130,13 @@
             "email": "Entrer votre email",
             "password": "Entrer votre not de passe"
          },
-         "button": "Mise à jour"
+         "button": "Mise à jour",
+         "error": {
+            "fullname": "Nom & prénom  ne peux pas être vide !!",
+            "email": "email ne peux pas être vide !!",
+            "password": "password  ne peux pas être vide !!",
+            "img": "La photo ne peux pas être vide !!"
+         }
       }
    },
    "langue": {

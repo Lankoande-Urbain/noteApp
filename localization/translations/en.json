@@ -130,7 +130,13 @@
             "email": "Enter your email",
             "password": "Enter your password"
          },
-         "button": "Update"
+         "button": "Update",
+         "error": {
+            "fullname": "fullname cannot be empty!!",
+            "email": "email cannot be empty !!",
+            "password": "password cannot be empty !! ",
+            "img": "Picker cannot be empty !!"
+         }
       }
    },
    "langue": {

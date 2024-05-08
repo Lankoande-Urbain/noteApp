@@ -45,7 +45,7 @@ export
 
          db.transaction(tx => {
             tx.executeSql(
-               'CREATE TABLE IF NOT EXISTS Users (user_id INTEGER PRIMARY KEY NOT NULL , user_fullname VARCHAR(20), user_name VARCHAR(20), user_password VARCHAR(20));',
+               'CREATE TABLE IF NOT EXISTS Users (user_id INTEGER PRIMARY KEY NOT NULL , user_fullname VARCHAR(20), user_name VARCHAR(20), user_password VARCHAR(20), img text);',
                [],
             );
          });

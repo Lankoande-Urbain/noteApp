@@ -12,6 +12,7 @@ export const PADDING = {
    verti: 15,
 }
 export const FONTSIZE = {
-   title: 18,
+   title: 22,
    normal: 16,
+   title2: 18,
 }

@@ -93,24 +93,21 @@ const Login = ({ navigation, handleLogin }) => {
             />
 
             <Button
-               buttonStyle={{
-                  width: 150, marginTop: 15, marginLeft: 'auto', marginRight: 'auto', fontSize: 18
-               }}
-
-               // type='outline'
-               radius={'lg'}
-               color={'warning'}
+               buttonStyle={loginStyle.btn}
+               titleStyle={loginStyle.btnText}
                onPress={() => {
                   checkInput();
                }}
 
-            >{t("screens.singin.buttom")}</Button>
+            >
+               {t("screens.singin.buttom")}
+            </Button>
          </View>
 
          <View style={{ flexDirection: 'row' }}>
             <Text style={loginStyle.linkText} >{t("screens.singin.text.ask")} </Text>
             <TouchableOpacity onPress={() => navigation.navigate('register')} style={{ marginBottom: 0, marginLeft: -20 }}>
-               <Text style={{ ...loginStyle.link, marginTop: 25 }}  > {t("screens.singin.text.link")}</Text>
+               <Text style={{ ...loginStyle.link, }}  > {t("screens.singin.text.link")}</Text>
             </TouchableOpacity>
          </View>
 

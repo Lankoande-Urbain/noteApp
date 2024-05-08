@@ -104,8 +104,8 @@ const Card = ({ item, navigation, fetchNotesFromApi }) => {
 
             </View>
          </View>
-         <EntypoIcon name="circle-with-cross" size={36} color={'red'}
-            style={{ position: 'absolute', zIndex: 1000, right: -16, top: -18, elevation: 100, backgroundColor: '#fff', padding: -15, borderRadius: 100, }}
+         <EntypoIcon name="circle-with-cross" size={28} color={'red'}
+            style={{ position: 'absolute', zIndex: 1000, right: -16, top: -18, elevation: 10, backgroundColor: '#fff', padding: -15, borderRadius: 100, }}
 
             onPress={() => {
                Alert.alert(t('screens.delete.text.title'), t('screens.delete.text.body'), [

@@ -6,6 +6,7 @@ import { Input, Icon, Button } from '@rneui/themed';
 import { COLOR } from '../../outils/constantes';
 import Toast from 'react-native-toast-message';
 import { useTranslation } from 'react-i18next';
+import RegisterStyle from '../Profile/style';
 
 const Register = ({ navigation, handleRegister }) => {
 
@@ -172,10 +173,8 @@ const Register = ({ navigation, handleRegister }) => {
             />
 
             <Button
-               buttonStyle={{
-                  width: 150, marginTop: 15, marginLeft: 'auto', marginRight: 'auto', fontSize: 18
-               }}
-
+               buttonStyle={RegisterStyle.btn}
+               titleStyle={RegisterStyle.btnText}
                // type='outline'
                radius={'lg'}
                color={'warning'}

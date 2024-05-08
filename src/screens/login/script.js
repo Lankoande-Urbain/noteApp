@@ -11,6 +11,7 @@ const loginStyle = StyleSheet.create({
       textAlign: 'center',
       marginBottom: 10,
       marginTop: 5,
+      letterSpacing: 1.5
    },
    form: {
       paddingHorizontal: 35,
@@ -20,8 +21,25 @@ const loginStyle = StyleSheet.create({
    },
    linkText: {
       paddingHorizontal: 20,
-      marginTop: 25,
       color: '#000',
+   },
+   btn: {
+      paddingHorizontal: -45,
+      width: 150,
+      marginTop: 15,
+      backgroundColor: COLOR.oran1,
+      width: '85%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      elevation: 10,
+      borderRadius: 25,
+      marginBottom: '10%'
+
+   },
+   btnText: {
+      fontWeight: 'bold',
+      fontSize: 21,
+      letterSpacing: 2.5,
    }
 
 });

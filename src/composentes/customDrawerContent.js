@@ -1,9 +1,8 @@
 import React from 'react';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { stopMapper } from 'react-native-reanimated';
-import { COLOR } from '../outils/constantes';
-import { Icon, Button, color } from '@rneui/themed';
+import { COLOR, FONTSIZE } from '../outils/constantes';
+import { Icon, Button } from '@rneui/themed';
 import DrawerHeader from './drawerHeader';
 import { useTranslation } from 'react-i18next';
 
@@ -13,17 +12,18 @@ function CustomDrawerContent({ props, handleLogout, navigation }) {
    const { t } = useTranslation();
    return (
       <DrawerContentScrollView {...props}>
-         {/* <DrawerItemList {...props} /> */}
          <View style={{ flex: 1, }}>
             <TouchableOpacity
-               activeOpacity={0.5}
+               activeOpacity={1}
                onPress={() => navigation.navigate('profile')}
             >
                <DrawerHeader />
             </TouchableOpacity>
+
             <View >
 
-               <View style={styles.about}>
+
+               {/* <View style={styles.about}>
                   <View style={styles.aboutHeader}>
                      <Icon name='info' color={COLOR.oran1} size={50} style={styles.aboutIcon} />
                      <Text style={styles.aboutTitre}>
@@ -36,7 +36,7 @@ function CustomDrawerContent({ props, handleLogout, navigation }) {
                         {t('screens.drawer.text')}
                      </Text>
                   </View>
-               </View>
+               </View> */}
                <View style={styles.athor}>
                   <View style={styles.aboutHeader}>
                      <Icon name='badge' color={COLOR.oran1} size={50} style={styles.aboutIcon} />
@@ -56,21 +56,9 @@ function CustomDrawerContent({ props, handleLogout, navigation }) {
 
                {/* btn Lougout */}
                <Button
-                  buttonStyle={{
-                     width: 230,
-                     marginLeft: 'auto',
-                     marginRight: 'auto',
-                     elevation: 10,
-                     borderRadius: 20,
-                     marginBottom: 30,
-                     marginTop: '20%',
-                  }}
+                  buttonStyle={styles.btn}
 
-                  titleStyle={{
-                     fontWeight: 'bold',
-                     fontSize: 21,
-                     letterSpacing: 2.5,
-                  }}
+                  titleStyle={styles.btnTitre}
                   color={COLOR.oran2}
 
                   onPress={() => {
@@ -120,7 +108,7 @@ const styles = StyleSheet.create({
 
    },
    athor: {
-      marginTop: 15,
+      marginTop: '15%',
       flexDirection: 'column',
       paddingHorizontal: 25,
       marginBottom: 15,
@@ -134,6 +122,20 @@ const styles = StyleSheet.create({
    athorMail: {
       flexDirection: 'row',
       color: COLOR.gris,
+   },
+   btn: {
+      width: '85%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      elevation: 10,
+      borderRadius: 20,
+      marginBottom: 30,
+      marginTop: '93%',
+   },
+   btnTitre: {
+      fontWeight: 'bold',
+      fontSize: FONTSIZE.title2,
+      letterSpacing: 2.5,
    }
 });
 export default CustomDrawerContent;

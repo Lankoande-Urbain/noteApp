@@ -7,24 +7,23 @@ const homeStyle = StyleSheet.create({
    // drawer style
 
    headerDrawer: {
-      flexDirection: 'row',
+      flexDirection: 'column',
       backgroundColor: COLOR.oran1,
-      padding: 10,
-      justifyContent: 'space-between',
+      // padding: 10,
+      // justifyContent: 'space-between',
       marginTop: -5,
-      elevation: 5,
-      borderBottomLeftRadius: 25,
-      borderBottomRightRadius: 25,
+      elevation: 25,
+      borderBottomLeftRadius: 50,
+      borderBottomRightRadius: 50,
+      padding: '7%',
 
 
    },
    headerDrawerTitre: {
       color: COLOR.bg_White,
-      fontSize: FONTSIZE.title,
+      fontSize: FONTSIZE.title2,
       fontWeight: 'bold',
-      marginTop: 'auto',
-      marginBottom: 'auto',
-      marginLeft: 20,
+      alignSelf: 'center',
 
    },
    // home style
